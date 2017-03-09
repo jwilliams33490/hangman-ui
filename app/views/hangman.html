@@ -1,0 +1,43 @@
+<p>Let's Play Hangman!</p>
+<!--{{hangman.targetWord}}
+{{hangman.incorrectLetters}}
+{{hangman.correctLetters}}
+{{hangman.hangManScore}}
+{{hangman.isGameOver}}
+{{hangman.isGameWon}}
+{{hangman.guess}}-->
+
+<!--<script src="hangman.js">-->
+
+<h4><span class="label label-primary">Guess</span></h4>
+<div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Enter A Letter" ng-model="hangman.guess" >
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="hangman.submitguess()">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<div class="col-lg-6">
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Correct Letters</h3>
+  </div>
+  <div class="panel-body">
+    <div ng-repeat="char in hangman.gameState.correctLetters">
+      <div>{{char}}</div>
+    </div>
+  </div>
+</div>
+ <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Incorrect Letters</h3>
+  </div>
+  <div class="panel-body">
+     <div ng-repeat="char in hangman.gameState.incorrectLetters">
+      <div>{{char}}</div>
+    </div>
+  </div>
+</div>
+</div >
