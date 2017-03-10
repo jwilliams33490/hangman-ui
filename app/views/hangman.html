@@ -8,6 +8,14 @@
 {{hangman.guess}}-->
 
 <!--<script src="hangman.js">-->
+<div ng-if="hangman.gameState.isGameOver" class="animate-if">
+  <div ng-if="hangman.gameState.isGameWon" class="animate-if">
+    <div class="alert alert-success" role="alert">You Won!</div>
+  </div>
+  <div ng-if="hangman.gameState.isGameWon==false" class="animate-if">
+    <div class="alert alert-danger" role="alert">You Lost</div>
+  </div>
+</div>
 
 <h4><span class="label label-primary">Guess</span></h4>
 <div class="col-lg-6">
