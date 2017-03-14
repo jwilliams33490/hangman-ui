@@ -21,33 +21,21 @@ angular.module('hmappApp')
   this.gameState = {};
   
   this.submitguess = function(){
-      this.log.log('Hi');
       var self = this;
-      var guessCharacter = this.guess;
-      this.HangmanSvc.getAdmin(null, function(response){
-          self.log.log('Hi22' + self.targetWord + '+' + guessCharacter + '+' + JSON.stringify(response));
-          self.HangmanSvc.postGuess({guess: guessCharacter}, function(response){
-            self.log.log('Hi10' + JSON.stringify(response));
-            self.gameState = response;
-            self.log.log('Hi10' + JSON.stringify(self.gameState));
-          });
+      self.HangmanSvc.postGuess({guess:  this.guess}, function(response){
+       self.gameState = response;
+       self.guess = '';     
       }, function(response){
-          self.log.log('err Hi22' + self.targetWord + '+' + guessCharacter + '+' + JSON.stringify(response));
-          self.HangmanSvc.postGuess({guess: guessCharacter}, function(response){
-            self.log.log('err Hi10' + JSON.stringify(response));
-            self.gameState = response;
-            self.log.log('err Hi10' + JSON.stringify(self.gameState));
-          });
+            self.log.error(response);
       });
-
-
-      // this.HangmanSvc.getAdmin(null, successFunction(response){/* do stuff*/}, errorFunction(response){/* do stuff*/});
-      
-//       var user = User.get({userId:123}, function() {
-//   user.abc = true;
-//   user.$save();
-// });
-      //this.correctLetters.push(this.guess);
-      this.guess = '';
   };
-  });
+
+   this.newgame = function(){
+      var self = this;
+      self.HangmanSvc.putAdmin(null, function(response){
+       self.gameState = response;     
+      }, function(response){
+            self.log.error(response);
+      });
+  };
+});
